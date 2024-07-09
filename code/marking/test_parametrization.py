@@ -31,8 +31,8 @@ def test_permutations(a, b):
     (1, 1, "+", 2),
     (3, 1, "-", 2),
 ], ids=["1+1", "3-1"]) # Can also pass a callable to generate the id, so that we can have dynamic ids
-def test_ids(a, b, expected):
-    assert calc(a, b, "+") == expected
+def test_ids(a, b, op, expected):
+    assert calc(a, b, op) == expected
 
 # Can also give id at the point of defining the test case
 @pytest.mark.parametrize(
