@@ -17,6 +17,8 @@ def test_smoke(op):
     calc(1, 2, op)
 
 
+# Permuting the test cases, the 4 test cases we will have: 1+3, 1+4, 2+3, 2+4
+# This means we cannot use the expected value in the test case
 @pytest.mark.parametrize("a", [1, 2])
 @pytest.mark.parametrize("b", [3, 4])
 def test_permutations(a, b):
