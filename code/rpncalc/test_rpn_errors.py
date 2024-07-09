@@ -11,15 +11,18 @@ def rpn() -> RPNCalculator:
 
 
 @pytest.mark.parametrize("op", ["**", "+-"])
-def test_unknown_operator(rpn: RPNCalculator, op: str):
+def test_unknown_operator(rpn: RPNCalculator, op: str, capsys: pytest.CaptureFixture):
     rpn.stack = [1, 2]
     rpn.evaluate(op)  # FIXME how to test that this prints an error?
+    assert capsys.readouterr().err == f"Invalid input: {op}\n"
 
-def test_division_by_zero(rpn: RPNCalculator):
+def test_division_by_zero(rpn: RPNCalculator, capfd: pytest.CaptureFixture):
     rpn.stack = [1, 0]
     rpn.evaluate("/")  # FIXME how to test that this prints an error?
+    assert capfd.readouterr().err == "Division by zero\n"
 
 @pytest.mark.parametrize("stack", [[1], []])
-def test_not_enough_operands(rpn: RPNCalculator, stack: list[int]):
+def test_not_enough_operands(rpn: RPNCalculator, stack: list[int], capsys: pytest.CaptureFixture):
     rpn.stack = stack
     rpn.evaluate("+")  # FIXME how to test that this prints an error?
+    assert capsys.readouterr().err == "Not enough operands\n"
