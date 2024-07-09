@@ -42,3 +42,5 @@ def test_ids(a, b, expected):
 ])
 def test_id_per_test(a, b, op, expected):
     assert calc(a, b, op) == expected
+
+# Using a data class for test parametrization can make the test cases more readable
