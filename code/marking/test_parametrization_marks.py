@@ -6,7 +6,7 @@ from rpncalc.utils import calc
     "a, b, op, expected", [
     pytest.param(
         2, 3, "**", 8,
-        marks=pytest.mark.xfail(reason="..."),
+        marks=pytest.mark.xfail(reason="..."), # This test case is expected to fail, xfail means expected to fail
     ),
     (1, 2, "+", 3),
     (3, 1, "-", 5),
