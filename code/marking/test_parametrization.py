@@ -2,6 +2,7 @@ import pytest
 from rpncalc.utils import calc
 
 
+# Parametrization preferred over looping inside the test to distinguish between different test cases
 @pytest.mark.parametrize("a, b, expected", [
     (1, 1, 3),
     (1, 2, 3),
