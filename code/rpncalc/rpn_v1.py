@@ -15,11 +15,11 @@ class RPNCalculator:
                 self.evaluate(inp)
 
     def evaluate(self, inp: str):
-        if inp.isdigit():
+        if inp.isdigit(): # Bug here as we can't enter negative numbers or floats
             n = float(inp)
             self.stack.append(n)
-        elif inp in "+-*/":
-            b = self.stack.pop()
+        elif inp in "+-*/": # Bug here as entered '+-' will go into here
+            b = self.stack.pop() # Bug here as stack is empty and we can just hit enter
             a = self.stack.pop()
             res = calc(a, b, inp)
             self.stack.append(res)
